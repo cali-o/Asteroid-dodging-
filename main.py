@@ -1,5 +1,5 @@
 #imports libary duh
-
+#wiat rbbrbb
 import pygame
 import time
 import random
@@ -7,12 +7,17 @@ import random
 pygame.font.init()
 #initalizes pygame
 pygame.init()
+# Load and play the music file
+pygame.mixer.music.load('tacos.mp3')  # Replace with your music file path
+pygame.mixer.music.play(-1)# '-1' makes the music loop indefinitely
+pygame.mixer.music.set_volume(.2)  
+
 #constants (window size and display name)
 WIDTH, HEIGHT = 1920, 1080
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Dodge Lang")
 #puts background on screen
-BG = pygame.transform.scale(pygame.image.load("bg.png"), (WIDTH, HEIGHT))
+BG = pygame.transform.scale(pygame.image.load("bg.jpg"), (WIDTH, HEIGHT))
 #constants
 PLAYER_WIDTH = 40
 PLAYER_HEIGHT = 60
@@ -87,7 +92,7 @@ def main():
 
         if hit:
             lost_text = font.render("You lost!", 1, "white")
-            WIN.blit(lost_text, (WIDTH/2 - lost_text.get_width()/2 - lost_text.get_height()/2))
+            WIN.blit(lost_text, ((WIDTH - lost_text.get_width()) / 2, (HEIGHT - lost_text.get_height()) / 2))
             pygame.display.update()
             pygame.time.delay(4000)
             break
